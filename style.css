@@ -14,13 +14,10 @@ body {
     min-height: 100vh;            
 }
 
-
-
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
-    
 }
 
 /* Navigation */
@@ -56,7 +53,6 @@ body {
     list-style: none;
     gap: 2rem;
 }
-
 
 .nav-link {
     text-decoration: none;
@@ -103,7 +99,6 @@ body {
     max-width: 1200px;
     margin: 0 auto;
 }
-
 
 .hero-profile {
     display: flex;
@@ -171,6 +166,7 @@ body {
     display: flex;
     gap: 1rem;
     margin-top: 2rem;
+    justify-content: flex-start; /* Default to left alignment */
 }
 
 .hero-social a {
@@ -210,52 +206,6 @@ body {
     to { transform: rotate(360deg); }
 }
 
-/* Responsive Design for Hero */
-@media (max-width: 968px) {
-    .hero-container {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-        text-align: center;
-    }
-    
-    .hero-content {
-        max-width: 100%;
-        margin: 0 auto;
-    }
-    
-    .profile-image-container {
-        width: 280px;
-        height: 280px;
-    }
-    
-    .floating-icon {
-        width: 40px;
-        height: 40px;
-        font-size: 1.2rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .profile-image-container {
-        width: 220px;
-        height: 220px;
-    }
-    
-    .floating-icon {
-        width: 35px;
-        height: 35px;
-        font-size: 1rem;
-    }
-    
-    .hero-title {
-        font-size: 2.2rem;
-    }
-    
-    .hero-subtitle {
-        font-size: 1.2rem;
-    }
-}
-
 .hero-content {
     max-width: 600px;
 }
@@ -292,7 +242,6 @@ body {
     margin-bottom: 1rem;
     animation: fadeInUp 1s ease 0.2s both;
 }
-
 
 .hero-description {
     font-size: 1.1rem;
@@ -563,8 +512,7 @@ section {
     color: white;
     text-align: center;
     padding: 2rem 0;
-     margin-top: auto; /* This is key for sticking to bottom */
- 
+    margin-top: auto; /* This is key for sticking to bottom */
 }
 
 /* Loading state for form button */
@@ -623,7 +571,37 @@ section {
     }
 }
 
-/* Responsive Design */
+/* Tablet and smaller screens */
+@media (max-width: 968px) {
+    .hero-container {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        text-align: center;
+    }
+    
+    .hero-content {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+    
+    .profile-image-container {
+        width: 280px;
+        height: 280px;
+    }
+    
+    .floating-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+    
+    /* Center social icons on tablet */
+    .hero-social {
+        justify-content: center;
+    }
+}
+
+/* Mobile screens */
 @media (max-width: 768px) {
     .hamburger {
         display: flex;
@@ -640,6 +618,7 @@ section {
         transition: 0.3s;
         box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
         padding: 2rem 0;
+        gap: 1.5rem;
     }
 
     .nav-menu.active {
@@ -650,9 +629,30 @@ section {
         font-size: 2.5rem;
     }
 
+    /* Fix for buttons on mobile */
     .hero-buttons {
         flex-direction: column;
+        align-items: center;
+        gap: 15px;
     }
+    
+    .hero-buttons .btn {
+        width: 100%;
+        max-width: 280px;
+        text-align: center;
+    }
+
+        /* Make buttons smaller and reduce gap for mobile */
+        .hero-buttons {
+            gap: 8px;
+        }
+        .hero-buttons .btn {
+            padding: 10px 0;
+            font-size: 1rem;
+            width: 90%;
+            max-width: 220px;
+            margin: 0 auto;
+        }
 
     .about-stats {
         flex-direction: column;
@@ -666,4 +666,71 @@ section {
     .projects-grid {
         grid-template-columns: 1fr;
     }
+    
+    /* Center social icons on mobile */
+    .hero-social {
+        justify-content: center;
+    }
+}
+
+/* Extra small mobile screens */
+@media (max-width: 480px) {
+    .profile-image-container {
+        width: 220px;
+        height: 220px;
+    }
+    
+    .floating-icon {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+    
+    .hero-title {
+        font-size: 2.2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .hero-description {
+        font-size: 1rem;
+    }
+    
+    /* Adjust button sizes for very small screens */
+    .hero-buttons .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+    
+    /* Ensure social icons are properly centered */
+    .hero-social {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+        /* Fix centering and spacing for hero-social icons */
+        .hero-social {
+            width: 100%;
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+            justify-content: center !important;
+            align-items: center !important;
+        }
+}
+
+/* Hamburger menu animation */
+.hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
 }
