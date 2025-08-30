@@ -605,6 +605,7 @@ section {
     }
 }
 
+
 /* Mobile screens */
 @media (max-width: 768px) {
    .hamburger {
@@ -744,6 +745,30 @@ section {
     .hero-social {
         justify-content: center;
     }
+}
+/* Add this for body scroll lock */
+.no-scroll {
+  overflow: hidden;
+  height: 100vh;
+}
+
+/* Nav overlay styling - add this */
+.nav-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.nav-overlay.active {
+  opacity: 1;
+  visibility: visible;
 }
 
 /* Extra small mobile screens */
