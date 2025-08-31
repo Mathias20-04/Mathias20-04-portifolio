@@ -149,44 +149,44 @@ if (profileImage) {
 }
 
 // Typewriter effect for hero title - only if element exists and is empty
+
 function initTypewriter() {
-  const subtitle = document.querySelector('.hero-subtitle');
-  // Only run if the subtitle exists and doesn't already have content
-  if (subtitle && !subtitle.textContent.trim()) {
-    const titles = ["A Web Developer", "A UI/UX Designer", "A Problem Solver"];
+    const titles = [" A Web Developer", " A UI/UX Designer", " A Problem Solver"];
+    const subtitle = document.querySelector('.hero-subtitle');
     let currentIndex = 0;
     
     function typeWriter() {
-      const currentTitle = titles[currentIndex];
-      let charIndex = 0;
-      
-      function type() {
-        if (charIndex < currentTitle.length) {
-          subtitle.textContent = currentTitle.substring(0, charIndex + 1);
-          charIndex++;
-          setTimeout(type, 100);
-        } else {
-          setTimeout(erase, 2000);
+        if (subtitle) {
+            const currentTitle = titles[currentIndex];
+            let charIndex = 0;
+            
+            function type() {
+                if (charIndex < currentTitle.length) {
+                    subtitle.textContent = currentTitle.substring(0, charIndex + 1);
+                    charIndex++;
+                    setTimeout(type, 100);
+                } else {
+                    setTimeout(erase, 2000);
+                }
+            }
+            
+            function erase() {
+                if (charIndex > 0) {
+                    subtitle.textContent = currentTitle.substring(0, charIndex - 1);
+                    charIndex--;
+                    setTimeout(erase, 50);
+                } else {
+                    currentIndex = (currentIndex + 1) % titles.length;
+                    setTimeout(typeWriter, 500);
+                }
+            }
+            
+            type();
         }
-      }
-      
-      function erase() {
-        if (charIndex > 0) {
-          subtitle.textContent = currentTitle.substring(0, charIndex - 1);
-          charIndex--;
-          setTimeout(erase, 50);
-        } else {
-          currentIndex = (currentIndex + 1) % titles.length;
-          setTimeout(typeWriter, 500);
-        }
-      }
-      
-      type();
     }
     
     // Start typewriter after initial load
     setTimeout(typeWriter, 1000);
-  }
 }
 
 // Initialize when page loads
